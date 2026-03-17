@@ -1,18 +1,65 @@
+# Flink Deployment Instruction
+
+- create AI Model in Flink
+```
+# llm embedding
+CREATE MODEL `llm_embedding_model`
+  INPUT (text STRING)
+  OUTPUT (embedding ARRAY<FLOAT>)
+  WITH (
+    'provider'           = 'bedrock',
+    'task'               = 'embedding',
+    'bedrock.connection' = '${confluent_flink_connection.bedrock_embedding_connection[0].display_name}'
+  );
+# external table - mongodb vector search 
+CREATE CONNECTION IF NOT EXISTS `mongodb-connection`
+    WITH (
+      'type' = 'MONGODB',
+      'endpoint' = '${local.effective_mongodb_conn}',
+      'username' = '${local.effective_mongodb_user}',
+      'password' = '${local.effective_mongodb_pass}'
+    );
+
+CREATE TABLE IF NOT EXISTS documents_vectordb_lab2 ( 
+	document_id STRING, 
+	chunk STRING, 
+	embedding ARRAY<FLOAT> ) 
+WITH ( 
+	'connector' = 'mongodb', 
+	'mongodb.connection' = 'mongodb-connection', 
+	'mongodb.database' = '${var.MONGODB_DATABASE}', 
+	'mongodb.collection' = '${var.MONGODB_COLLECTION}', 
+	'mongodb.index' = '${var.MONGODB_INDEX_NAME}', 
+	'mongodb.embedding_column' = 'embedding', 
+	'mongodb.numCandidates' = '500' );"
+# llm textgen
+CREATE MODEL `llm_textgen_model`
+  INPUT (prompt STRING)
+  OUTPUT (response STRING)
+  WITH (
+    'provider'              = 'bedrock',
+    'task'                  = 'text_generation',
+    'bedrock.connection'    = '${confluent_flink_connection.bedrock_connection[0].display_name}',
+    'bedrock.params.max_tokens' = '50000'
+  );
+```
+
 - create flink table chatbot_input
+
 ```
 create table if not exists chatbot_input (
 	query_id STRING PRIMARY KEY NOT ENFORCED,
         query STRING NOT NULL)
 WITH (
 'changelog.mode' = 'append',
-key.format='avro-registry'
+'key.format'='avro-registry'
 );
-
-
+```
 
 
 
 - Query MongoDB 
+
 ```
 create table  chatbot_search_results as 
 with queries_embed as (
@@ -37,6 +84,7 @@ FROM queries_embed AS qe,
 ```
 
 -- Generate response using LLM
+
 ```
 CREATE TABLE IF NOT EXISTS chatbot_output (
     query_id STRING PRIMARY KEY NOT ENFORCED,
@@ -118,4 +166,5 @@ LATERAL TABLE (
     )
 ) AS pred;
 ```
+
 
