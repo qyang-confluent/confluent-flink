@@ -5,19 +5,19 @@ This guide will help you get the Kafka Chatbot web application up and running qu
 ## What You've Built
 
 A modern web-based chatbot that:
-- **Sends** user queries to Confluent Cloud Kafka `queries` topic using **Avro serialization**
-- **Receives** search results from `search_results_response` topic using **Avro deserialization**
+- **Sends** user queries to Confluent Cloud Kafka `chatbot_input` topic using **Avro serialization**
+- **Receives** search results from `chatbot_output` topic using **Avro deserialization**
 - Uses Schema Registry for schema management
 - Provides a beautiful, responsive chat interface
 
 ## Architecture Flow
 
 ```
-User Input → Web UI → Flask Backend → Avro Serializer → Kafka Producer → 'queries' topic
+User Input → Web UI → Flask Backend → Avro Serializer → Kafka Producer → 'chatbot_input' topic
                                                                               ↓
                                                                     [Your Search Service]
                                                                               ↓
-User sees response ← Web UI ← Flask Backend ← Avro Deserializer ← Kafka Consumer ← 'search_results_response' topic
+User sees response ← Web UI ← Flask Backend ← Avro Deserializer ← Kafka Consumer ← 'chatbot_output' topic
 ```
 
 ## Quick Setup (5 Steps)
@@ -56,14 +56,14 @@ SCHEMA_REGISTRY_API_SECRET=YOUR_SR_API_SECRET
 ### 3. Create Topics in Confluent Cloud
 
 Create two topics:
-- `queries` - for sending user questions
-- `search_results_response` - for receiving answers
+- `chatbot_input` - for sending user questions
+- `chatbot_output` - for receiving answers
 
 ### 4. Register Schemas (Optional)
 
 The schemas are embedded in the code, but you may want to register them in Schema Registry:
 
-**For `queries` topic (value schema):**
+**For `chatbot_input` topic (value schema):**
 ```json
 {
   "type": "record",
@@ -75,11 +75,11 @@ The schemas are embedded in the code, but you may want to register them in Schem
 }
 ```
 
-**For `search_results_response` topic (value schema):**
+**For `chatbot_output` topic (value schema):**
 ```json
 {
   "type": "record",
-  "name": "search_results_response_value",
+  "name": "chatbot_output_value",
   "namespace": "org.apache.flink.avro.generated.record",
   "fields": [
     {"name": "query", "type": ["null", "string"], "default": null},
@@ -115,11 +115,11 @@ Open your browser to: **http://localhost:5000**
    {"query": "What is machine learning?"}
    ```
 3. **Avro Serializer** converts to binary format
-4. **Producer** sends to `queries` topic with key `query-<uuid>`
+4. **Producer** sends to `chatbot_input` topic with key `query-<uuid>`
 
 ### When you receive a response:
 
-1. **Consumer** receives Avro message from `search_results_response`
+1. **Consumer** receives Avro message from `chatbot_output`
 2. **Avro Deserializer** converts to Python dict
 3. **Flask backend** extracts:
    - `response` field → main answer
@@ -132,17 +132,17 @@ Open your browser to: **http://localhost:5000**
 ### Test Producer (sends query)
 
 Send a test message through the web UI, and check Confluent Cloud:
-- Go to Topics → `queries`
+- Go to Topics → `chatbot_input`
 - Verify message appears with Avro encoding
 
 ### Test Consumer (receives response)
 
 To test the consumer, you need a service that:
-1. Consumes from `queries` topic
-2. Produces to `search_results_response` topic
+1. Consumes from `chatbot_input` topic
+2. Produces to `chatbot_output` topic
 3. Uses the same `query_id` as the message key
 
-**Example test message you can manually produce to `search_results_response`:**
+**Example test message you can manually produce to `chatbot_output`:**
 ```json
 {
   "query": "test query",
@@ -180,7 +180,7 @@ chatbot/
 - Ensure Schema Registry is enabled in your cluster
 
 ### "No response from Kafka"
-- Verify a service is consuming from `queries` and producing to `search_results_response`
+- Verify a service is consuming from `chatbot_input` and producing to `chatbot_output`
 - Check that response message key matches the query_id
 - Look at Confluent Cloud consumer lag
 
@@ -191,7 +191,7 @@ chatbot/
 
 ## Next Steps
 
-1. **Connect your search service** that consumes from `queries` and produces to `search_results_response`
+1. **Connect your search service** that consumes from `chatbot_input` and produces to `chatbot_output`
 2. **Customize the UI** in `templates/index.html`
 3. **Add authentication** for production use
 4. **Deploy** using Gunicorn or similar WSGI server
