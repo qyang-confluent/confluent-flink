@@ -129,8 +129,8 @@ APIs    Partition    Search Index
 ### High-Level Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                        Data Sources                              │
+┌────────────────────────────────────────────────────────────────┐
+│                        Data Sources                            │
 ├─────────────┬──────────────┬──────────────┬────────────────────┤
 │   Kafka     │  Databases   │   APIs       │   File Systems     │
 │  (Events)   │   (CDC)      │  (REST)      │   (Logs)           │
