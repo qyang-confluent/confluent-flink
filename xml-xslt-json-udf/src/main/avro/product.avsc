@@ -1,0 +1,10 @@
+{
+  "namespace": "com.example.avro",
+  "type": "record",
+  "name": "ProductRecord",
+  "fields": [
+    {"name": "name", "type": "string"},
+    {"name": "price", "type": "double"},
+    {"name": "category", "type": "string"}
+  ]
+}

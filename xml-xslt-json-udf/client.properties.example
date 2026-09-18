@@ -1,0 +1,19 @@
+# Copy this file to client.properties and fill in your Confluent Cloud values.
+# Download a ready-made version of this file from the Confluent Cloud UI:
+# Cluster -> Clients -> Java -> "Configuration snippet".
+# client.properties is gitignored -- never commit real credentials.
+
+# --- Kafka cluster ---
+bootstrap.servers=<BOOTSTRAP_SERVER>:9092
+security.protocol=SASL_SSL
+sasl.mechanism=PLAIN
+sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username='<CLUSTER_API_KEY>' password='<CLUSTER_API_SECRET>';
+
+# --- Schema Registry ---
+schema.registry.url=https://<SCHEMA_REGISTRY_ENDPOINT>
+basic.auth.credentials.source=USER_INFO
+basic.auth.user.info=<SR_API_KEY>:<SR_API_SECRET>
+
+# --- App topics (not a Kafka client config; read by KafkaXmlToAvroTransformer) ---
+app.topic.input=xml-input-topic
+app.topic.output=product-output-topic
