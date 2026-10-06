@@ -1,0 +1,5 @@
+environment_id             = "env-xxxxx"
+kafka_cluster_name         = "my-kafka-cluster"
+service_account_id         = "sa-xxxxx"
+cloud                      = "AWS"
+region                     = "us-east-1"
