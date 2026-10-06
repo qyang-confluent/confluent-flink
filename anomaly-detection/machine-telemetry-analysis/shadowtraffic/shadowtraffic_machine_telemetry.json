@@ -1,0 +1,1030 @@
+{
+  "generators": [
+    {
+      "name": "machine-telemetry",
+      "topic": "machine.telemetry",
+      "key": "WAM84523K00F00104",
+      "vars": {
+        "createdMs": {
+          "_gen": "now"
+        },
+        "engineSpeed": {
+          "_gen": "weightedOneOf",
+          "choices": [
+            {
+              "weight": 96,
+              "value": {
+                "_gen": "normalDistribution",
+                "mean": 1300,
+                "sd": 100,
+                "decimals": 0,
+                "clamp": [
+                  700,
+                  1800
+                ]
+              }
+            },
+            {
+              "weight": 4,
+              "value": {
+                "_gen": "uniformDistribution",
+                "bounds": [
+                  4500,
+                  7000
+                ],
+                "decimals": 0
+              }
+            }
+          ]
+        },
+        "engineLoad": {
+          "_gen": "weightedOneOf",
+          "choices": [
+            {
+              "weight": 97,
+              "value": {
+                "_gen": "normalDistribution",
+                "mean": 72,
+                "sd": 12,
+                "decimals": 1,
+                "clamp": [
+                  0,
+                  100
+                ]
+              }
+            },
+            {
+              "weight": 3,
+              "value": {
+                "_gen": "uniformDistribution",
+                "bounds": [
+                  95,
+                  100
+                ],
+                "decimals": 1
+              }
+            }
+          ]
+        },
+        "engineTorque": {
+          "_gen": "normalDistribution",
+          "mean": 68,
+          "sd": 12,
+          "decimals": 1,
+          "clamp": [
+            0,
+            100
+          ]
+        },
+        "fuelRate": {
+          "_gen": "normalDistribution",
+          "mean": 1.2e-05,
+          "sd": 2e-06,
+          "decimals": 10,
+          "clamp": [
+            1e-06,
+            2.5e-05
+          ]
+        },
+        "vehicleSpeed": {
+          "_gen": "normalDistribution",
+          "mean": 3.9,
+          "sd": 0.8,
+          "decimals": 4,
+          "clamp": [
+            0,
+            12
+          ]
+        },
+        "engineOilTemp": {
+          "_gen": "weightedOneOf",
+          "choices": [
+            {
+              "weight": 98,
+              "value": {
+                "_gen": "normalDistribution",
+                "mean": 108,
+                "sd": 4,
+                "decimals": 2,
+                "clamp": [
+                  80,
+                  125
+                ]
+              }
+            },
+            {
+              "weight": 2,
+              "value": {
+                "_gen": "uniformDistribution",
+                "bounds": [
+                  130,
+                  150
+                ],
+                "decimals": 2
+              }
+            }
+          ]
+        },
+        "engineOilPressure": {
+          "_gen": "normalDistribution",
+          "mean": 284000,
+          "sd": 18000,
+          "decimals": 0,
+          "clamp": [
+            180000,
+            360000
+          ]
+        },
+        "hydraulicOilTemp": {
+          "_gen": "normalDistribution",
+          "mean": 62,
+          "sd": 3,
+          "decimals": 2,
+          "clamp": [
+            35,
+            100
+          ]
+        },
+        "transActRatio": {
+          "_gen": "normalDistribution",
+          "mean": 2246,
+          "sd": 25,
+          "decimals": 0,
+          "clamp": [
+            1800,
+            2600
+          ]
+        },
+        "transSetRatio": {
+          "_gen": "normalDistribution",
+          "mean": 2270,
+          "sd": 20,
+          "decimals": 0,
+          "clamp": [
+            1800,
+            2600
+          ]
+        },
+        "tractiveForce": {
+          "_gen": "normalDistribution",
+          "mean": 37740,
+          "sd": 6000,
+          "decimals": 0,
+          "clamp": [
+            0,
+            60000
+          ]
+        },
+        "rearDraft": {
+          "_gen": "normalDistribution",
+          "mean": 880,
+          "sd": 150,
+          "decimals": 0,
+          "clamp": [
+            0,
+            2500
+          ]
+        },
+        "hitchPosition": {
+          "_gen": "normalDistribution",
+          "mean": 22,
+          "sd": 8,
+          "decimals": 1,
+          "clamp": [
+            0,
+            100
+          ]
+        },
+        "batteryVoltage": {
+          "_gen": "normalDistribution",
+          "mean": 14.05,
+          "sd": 0.15,
+          "decimals": 2,
+          "clamp": [
+            11.5,
+            15.5
+          ]
+        },
+        "intakeManifoldPressure": {
+          "_gen": "normalDistribution",
+          "mean": 230000,
+          "sd": 15000,
+          "decimals": 0,
+          "clamp": [
+            80000,
+            350000
+          ]
+        },
+        "intakeManifoldTemp": {
+          "_gen": "normalDistribution",
+          "mean": 50,
+          "sd": 5,
+          "decimals": 2,
+          "clamp": [
+            0,
+            100
+          ]
+        },
+        "hydraulicEngineSpeed": {
+          "_gen": "normalDistribution",
+          "mean": 2065,
+          "sd": 80,
+          "decimals": 0,
+          "clamp": [
+            0,
+            3000
+          ]
+        },
+        "summationShaftSpeed": {
+          "_gen": "normalDistribution",
+          "mean": 1102,
+          "sd": 40,
+          "decimals": 0,
+          "clamp": [
+            0,
+            2000
+          ]
+        },
+        "bevelPinionSpeed": {
+          "_gen": "normalDistribution",
+          "mean": 1096,
+          "sd": 40,
+          "decimals": 0,
+          "clamp": [
+            0,
+            2000
+          ]
+        },
+        "machineRoll": {
+          "_gen": "normalDistribution",
+          "mean": 2.18,
+          "sd": 0.8,
+          "decimals": 2,
+          "clamp": [
+            -20,
+            20
+          ]
+        },
+        "machinePitch": {
+          "_gen": "normalDistribution",
+          "mean": 2.07,
+          "sd": 0.8,
+          "decimals": 2,
+          "clamp": [
+            -20,
+            20
+          ]
+        },
+        "outsideAirTemp": {
+          "_gen": "normalDistribution",
+          "mean": 20,
+          "sd": 3,
+          "decimals": 2,
+          "clamp": [
+            -30,
+            50
+          ]
+        },
+        "distance": {
+          "_gen": "uniformDistribution",
+          "bounds": [
+            1900,
+            2000
+          ],
+          "decimals": 3
+        },
+        "scrTankLevel": {
+          "_gen": "normalDistribution",
+          "mean": 63.6,
+          "sd": 1.5,
+          "decimals": 2,
+          "clamp": [
+            0,
+            100
+          ]
+        },
+        "dpfDifferentialPressure": {
+          "_gen": "normalDistribution",
+          "mean": 5900,
+          "sd": 700,
+          "decimals": 0,
+          "clamp": [
+            0,
+            30000
+          ]
+        },
+        "exhaustTemp1": {
+          "_gen": "normalDistribution",
+          "mean": 474,
+          "sd": 12,
+          "decimals": 2,
+          "clamp": [
+            250,
+            700
+          ]
+        },
+        "exhaustTemp3": {
+          "_gen": "normalDistribution",
+          "mean": 459,
+          "sd": 12,
+          "decimals": 2,
+          "clamp": [
+            250,
+            700
+          ]
+        },
+        "scrInletTemp": {
+          "_gen": "normalDistribution",
+          "mean": 458,
+          "sd": 12,
+          "decimals": 2,
+          "clamp": [
+            250,
+            700
+          ]
+        },
+        "scrOutletTemp": {
+          "_gen": "normalDistribution",
+          "mean": 476,
+          "sd": 12,
+          "decimals": 2,
+          "clamp": [
+            250,
+            700
+          ]
+        },
+        "exhaustMassFlow": {
+          "_gen": "normalDistribution",
+          "mean": 0.239,
+          "sd": 0.025,
+          "decimals": 6,
+          "clamp": [
+            0,
+            1
+          ]
+        },
+        "scrDosingQuantity": {
+          "_gen": "normalDistribution",
+          "mean": 0.00134,
+          "sd": 0.0002,
+          "decimals": 7,
+          "clamp": [
+            0,
+            0.01
+          ]
+        },
+        "fanSpeed": {
+          "_gen": "normalDistribution",
+          "mean": 1880,
+          "sd": 100,
+          "decimals": 0,
+          "clamp": [
+            0,
+            3000
+          ]
+        },
+        "wasMedianAngle": {
+          "_gen": "normalDistribution",
+          "mean": 11.08,
+          "sd": 1.5,
+          "decimals": 2,
+          "clamp": [
+            -45,
+            45
+          ]
+        },
+        "latitude": {
+          "_gen": "normalDistribution",
+          "mean": 46.9184619,
+          "sd": 0.0002,
+          "decimals": 7,
+          "clamp": [
+            46.8,
+            47.0
+          ]
+        },
+        "longitude": {
+          "_gen": "normalDistribution",
+          "mean": 16.69813,
+          "sd": 0.0002,
+          "decimals": 7,
+          "clamp": [
+            16.5,
+            16.9
+          ]
+        },
+        "elevation": {
+          "_gen": "normalDistribution",
+          "mean": 150,
+          "sd": 5,
+          "decimals": 2,
+          "clamp": [
+            0,
+            500
+          ]
+        },
+        "heading": {
+          "_gen": "uniformDistribution",
+          "bounds": [
+            0,
+            360
+          ],
+          "decimals": 2
+        },
+        "equipmentStatus": {
+          "_gen": "weightedOneOf",
+          "choices": [
+            {
+              "weight": 85,
+              "value": "Working"
+            },
+            {
+              "weight": 10,
+              "value": "Idle"
+            },
+            {
+              "weight": 5,
+              "value": "Transport"
+            }
+          ]
+        },
+        "gpsMode": 3.0
+      },
+      "value": {
+        "header": {
+          "id": {
+            "_gen": "uuid"
+          },
+          "schemaID": "5d6a9033-632a-48ef-8724-349ed1bf0648",
+          "schemaVersion": 2,
+          "timeOfCreation": {
+            "_gen": "formatDateTime",
+            "ms": {
+              "_gen": "var",
+              "var": "createdMs"
+            },
+            "format": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+          },
+          "timeOfReception": {
+            "_gen": "formatDateTime",
+            "ms": {
+              "_gen": "add",
+              "args": [
+                {
+                  "_gen": "var",
+                  "var": "createdMs"
+                },
+                4000
+              ]
+            },
+            "format": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+          }
+        },
+        "body": {
+          "canData": [
+            {
+              "canID": 21401,
+              "canName": "GPS_MODE",
+              "unit": "enum",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "gpsMode"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "gpsMode"
+              }
+            },
+            {
+              "canID": 92,
+              "canName": "ENGINE_LOAD",
+              "unit": "%",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "engineLoad"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "engineLoad"
+              }
+            },
+            {
+              "canID": 1862,
+              "canName": "VEHICLE_SPEED",
+              "unit": "m/s",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "vehicleSpeed"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "vehicleSpeed"
+              }
+            },
+            {
+              "canID": 183,
+              "canName": "FUEL_RATE",
+              "unit": "m3/s",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "fuelRate"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "fuelRate"
+              }
+            },
+            {
+              "canID": 3826,
+              "canName": "SCR_AVERAGE_CONSUMPTION",
+              "unit": "m3/s",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "scrDosingQuantity"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "scrDosingQuantity"
+              }
+            },
+            {
+              "canID": 100,
+              "canName": "ENGINE_OIL_PRESS",
+              "unit": "Pa",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "engineOilPressure"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "engineOilPressure"
+              }
+            },
+            {
+              "canID": 102,
+              "canName": "INTAKE_MANIFOLD_PRESSURE",
+              "unit": "Pa",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "intakeManifoldPressure"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "intakeManifoldPressure"
+              }
+            },
+            {
+              "canID": 190,
+              "canName": "ENGINE_SPEED",
+              "unit": "rpm",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "engineSpeed"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "engineSpeed"
+              }
+            },
+            {
+              "canID": 168,
+              "canName": "BATTERY_VOLTAGE",
+              "unit": "V",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "batteryVoltage"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "batteryVoltage"
+              }
+            },
+            {
+              "canID": 1873,
+              "canName": "HITCH_POSITION_REAR",
+              "unit": "%",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "hitchPosition"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "hitchPosition"
+              }
+            },
+            {
+              "canID": 171,
+              "canName": "OUTSIDE_AIR_TEMP",
+              "unit": "\u00b0C",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "outsideAirTemp"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "outsideAirTemp"
+              }
+            },
+            {
+              "canID": 1879,
+              "canName": "REAR_DRAFT",
+              "unit": "N",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "rearDraft"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "rearDraft"
+              }
+            },
+            {
+              "canID": 523407,
+              "canName": "HYDRAULIC_ENGINE_SPEED_2",
+              "unit": "rpm",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "hydraulicEngineSpeed"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "hydraulicEngineSpeed"
+              }
+            },
+            {
+              "canID": 523408,
+              "canName": "SUMMATION_SHAFT_SPEED",
+              "unit": "rpm",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "summationShaftSpeed"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "summationShaftSpeed"
+              }
+            },
+            {
+              "canID": 523409,
+              "canName": "BEVEL_PINION_SPEED_SENSOR",
+              "unit": "rpm",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "bevelPinionSpeed"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "bevelPinionSpeed"
+              }
+            },
+            {
+              "canID": 105,
+              "canName": "INTAKE_MANIFOLD_TEMP",
+              "unit": "\u00b0C",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "intakeManifoldTemp"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "intakeManifoldTemp"
+              }
+            },
+            {
+              "canID": 61442,
+              "canName": "TRANS_SET_RATIO",
+              "unit": "(1)",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "transSetRatio"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "transSetRatio"
+              }
+            },
+            {
+              "canID": 61441,
+              "canName": "TRANS_ACT_RATIO",
+              "unit": "(1)",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "transActRatio"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "transActRatio"
+              }
+            },
+            {
+              "canID": 1638,
+              "canName": "HYDR_OIL_TEMP",
+              "unit": "\u00b0C",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "hydraulicOilTemp"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "hydraulicOilTemp"
+              }
+            },
+            {
+              "canID": 3319,
+              "canName": "MACHINE_ROLL",
+              "unit": "deg",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "machineRoll"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "machineRoll"
+              }
+            },
+            {
+              "canID": 3318,
+              "canName": "MACHINE_PITCH",
+              "unit": "deg",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "machinePitch"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "machinePitch"
+              }
+            },
+            {
+              "canID": 57346,
+              "canName": "DISTANCE",
+              "unit": "m",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "distance"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "distance"
+              }
+            },
+            {
+              "canID": 175,
+              "canName": "ENGINE_OIL_TEMP",
+              "unit": "\u00b0C",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "engineOilTemp"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "engineOilTemp"
+              }
+            },
+            {
+              "canID": 513,
+              "canName": "ENGINE_PERCENT_TORQUE",
+              "unit": "%",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "engineTorque"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "engineTorque"
+              }
+            },
+            {
+              "canID": 3357,
+              "canName": "ACTUAL_MAXIMUM_AVAILABLE_ENGINE_TORQUE",
+              "unit": "%",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "engineTorque"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "engineTorque"
+              }
+            },
+            {
+              "canID": 4331,
+              "canName": "SCR_ACTUAL_DOSING_QUANTITY",
+              "unit": "kg/s",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "scrDosingQuantity"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "scrDosingQuantity"
+              }
+            },
+            {
+              "canID": 520205,
+              "canName": "SETPOINT_ENGINE_FAN_SPEED",
+              "unit": "rpm",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "fanSpeed"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "fanSpeed"
+              }
+            },
+            {
+              "canID": 3236,
+              "canName": "AFTERTREATMENT_1_EXHAUST_GAS_MASS_FLOW_RATE",
+              "unit": "kg/s",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "exhaustMassFlow"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "exhaustMassFlow"
+              }
+            },
+            {
+              "canID": 3241,
+              "canName": "AFTERTREATMENT_1_EXHAUST_TEMPERATURE_1",
+              "unit": "\u00b0C",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "exhaustTemp1"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "exhaustTemp1"
+              }
+            },
+            {
+              "canID": 3245,
+              "canName": "AFTERTREATMENT_1_EXHAUST_TEMPERATURE_3",
+              "unit": "\u00b0C",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "exhaustTemp3"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "exhaustTemp3"
+              }
+            },
+            {
+              "canID": 3251,
+              "canName": "AFTERTREATMENT_1_DIESEL_PARTICULATE_FILTER_DIFFERENTIAL_PRESSURE",
+              "unit": "Pa",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "dpfDifferentialPressure"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "dpfDifferentialPressure"
+              }
+            },
+            {
+              "canID": 4360,
+              "canName": "SCR_CATALYST_INTAKE_GAS_TEMP",
+              "unit": "\u00b0C",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "scrInletTemp"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "scrInletTemp"
+              }
+            },
+            {
+              "canID": 4363,
+              "canName": "SCR_CATALYST_OUTLET_GAS_TEMP",
+              "unit": "\u00b0C",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "scrOutletTemp"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "scrOutletTemp"
+              }
+            },
+            {
+              "canID": 520331,
+              "canName": "TRANS_TRACTIVE_FORCE",
+              "unit": "N",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "tractiveForce"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "tractiveForce"
+              }
+            },
+            {
+              "canID": 520344,
+              "canName": "WAS_MEDIAN_ANGLE",
+              "unit": "deg",
+              "valueRaw": {
+                "_gen": "var",
+                "var": "wasMedianAngle"
+              },
+              "value": {
+                "_gen": "var",
+                "var": "wasMedianAngle"
+              }
+            }
+          ],
+          "deviceRevision": "0402",
+          "deviceSerialNumber": "0402-161235",
+          "deviceType": "Gateway",
+          "environment": "engineering",
+          "equipmentIdentificationNumber": "WAM84523K00F00104",
+          "equipmentStatusRaw": 5,
+          "equipmentStatus": {
+            "_gen": "var",
+            "var": "equipmentStatus"
+          },
+          "geospatialData": {
+            "elevation": {
+              "_gen": "var",
+              "var": "elevation"
+            },
+            "heading": {
+              "_gen": "var",
+              "var": "heading"
+            },
+            "latitude": {
+              "_gen": "var",
+              "var": "latitude"
+            },
+            "longitude": {
+              "_gen": "var",
+              "var": "longitude"
+            },
+            "speed": {
+              "_gen": "var",
+              "var": "vehicleSpeed"
+            },
+            "timeStamp": {
+              "_gen": "formatDateTime",
+              "ms": {
+                "_gen": "var",
+                "var": "createdMs"
+              },
+              "format": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+            }
+          }
+        }
+      },
+      "localConfigs": {
+        "maxEvents": 1000,
+        "throttleMs": 10000,
+        "avroSchemaHint": {
+          "value": {
+            "_gen": "loadJsonFile",
+            "file": "/home/config/TelemetryDataFrameValue.avsc"
+          }
+        },
+        "schemaRegistrySubject": {
+          "value": "machine.telemetry-value"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "confluentCloud": {
+      "kind": "kafka",
+      "producerConfigs": {
+        "bootstrap.servers": {
+          "_gen": "env",
+          "var": "CCLOUD_BOOTSTRAP_SERVERS"
+        },
+        "security.protocol": "SASL_SSL",
+        "sasl.mechanism": "PLAIN",
+        "sasl.jaas.config": {
+          "_gen": "env",
+          "var": "CCLOUD_SASL_JAAS_CONFIG",
+          "mask": true
+        },
+        "schema.registry.url": {
+          "_gen": "env",
+          "var": "CCLOUD_SR_URL"
+        },
+        "basic.auth.credentials.source": "USER_INFO",
+        "basic.auth.user.info": {
+          "_gen": "env",
+          "var": "CCLOUD_SR_USER_INFO",
+          "mask": true
+        },
+        "key.serializer": "org.apache.kafka.common.serialization.StringSerializer",
+        "value.serializer": "io.confluent.kafka.serializers.KafkaAvroSerializer",
+        "value.subject.name.strategy": "io.confluent.kafka.serializers.subject.TopicNameStrategy",
+        "auto.register.schemas": "true"
+      }
+    }
+  }
+}

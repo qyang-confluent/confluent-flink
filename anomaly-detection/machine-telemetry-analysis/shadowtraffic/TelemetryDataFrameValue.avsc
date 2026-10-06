@@ -1,0 +1,165 @@
+{
+  "type": "record",
+  "name": "TelemetryDataFrameValue",
+  "namespace": "machine.fuse.data.telemetryDataFrame",
+  "fields": [
+    {
+      "name": "header",
+      "type": {
+        "type": "record",
+        "name": "Header",
+        "namespace": "machine.fuse.data.common",
+        "fields": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "schemaID",
+            "type": "string"
+          },
+          {
+            "name": "schemaVersion",
+            "type": "int"
+          },
+          {
+            "name": "timeOfCreation",
+            "type": "string"
+          },
+          {
+            "name": "timeOfReception",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "body",
+      "type": {
+        "type": "record",
+        "name": "CanDataFrameBody",
+        "fields": [
+          {
+            "name": "canData",
+            "type": {
+              "type": "array",
+              "items": {
+                "type": "record",
+                "name": "CanDataFrame",
+                "namespace": "machine.fuse.data.common",
+                "fields": [
+                  {
+                    "name": "canID",
+                    "type": "long"
+                  },
+                  {
+                    "name": "canName",
+                    "type": "string"
+                  },
+                  {
+                    "name": "unit",
+                    "type": "string"
+                  },
+                  {
+                    "name": "valueRaw",
+                    "type": "double"
+                  },
+                  {
+                    "name": "value",
+                    "type": [
+                      "null",
+                      "double"
+                    ],
+                    "default": null
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "deviceRevision",
+            "type": "string"
+          },
+          {
+            "name": "deviceSerialNumber",
+            "type": "string"
+          },
+          {
+            "name": "deviceType",
+            "type": "string"
+          },
+          {
+            "name": "environment",
+            "type": "string"
+          },
+          {
+            "name": "equipmentIdentificationNumber",
+            "type": "string"
+          },
+          {
+            "name": "equipmentStatusRaw",
+            "type": [
+              "null",
+              "long"
+            ],
+            "default": null
+          },
+          {
+            "name": "equipmentStatus",
+            "type": [
+              "null",
+              "string"
+            ],
+            "default": null
+          },
+          {
+            "name": "geospatialData",
+            "type": {
+              "type": "record",
+              "name": "GeospatialData",
+              "namespace": "machine.fuse.data.common",
+              "fields": [
+                {
+                  "name": "elevation",
+                  "type": [
+                    "null",
+                    "double"
+                  ],
+                  "default": null
+                },
+                {
+                  "name": "heading",
+                  "type": [
+                    "null",
+                    "double"
+                  ],
+                  "default": null
+                },
+                {
+                  "name": "latitude",
+                  "type": "double"
+                },
+                {
+                  "name": "longitude",
+                  "type": "double"
+                },
+                {
+                  "name": "speed",
+                  "type": [
+                    "null",
+                    "double"
+                  ],
+                  "default": null
+                },
+                {
+                  "name": "timeStamp",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
