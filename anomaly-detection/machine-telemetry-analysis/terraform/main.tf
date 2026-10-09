@@ -97,6 +97,11 @@ resource "confluent_flink_materialized_table" "features_10s" {
   session_options = local.flink_session_options
   rest_endpoint   = data.confluent_flink_region.this.rest_endpoint
 
+  watermark {
+    column     = "window_time"
+    expression = "`window_time`"
+  }
+
   distribution {
     kind         = "HASH"
     keys         = ["equipment_id"]
@@ -121,7 +126,16 @@ resource "confluent_flink_materialized_table" "downstream" {
   display_name    = each.key
   query           = each.value
   session_options = local.flink_session_options
+  table_options   = local.downstream_table_options
   rest_endpoint   = data.confluent_flink_region.this.rest_endpoint
+
+  dynamic "watermark" {
+    for_each = contains(keys(local.downstream_watermark_columns), each.key) ? [local.downstream_watermark_columns[each.key]] : []
+    content {
+      column     = watermark.value
+      expression = "`${watermark.value}`"
+    }
+  }
 
   distribution {
     kind         = "HASH"

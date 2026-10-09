@@ -8,10 +8,15 @@ with telemetry_long as (
   r.`$rowtime` AS row_ts,
   r.header.id AS message_id,
   r.body.equipmentIdentificationNumber AS equipment_id,
-  TO_TIMESTAMP_LTZ(
-    r.header.timeOfCreation,
-    'yyyy-MM-dd''T''HH:mm:ss.SSS''Z''',
-    'UTC'
+  -- COALESCE makes event_ts NOT NULL; rows with an unparsable timestamp are filtered out below
+  -- (the epoch fallback is never emitted).
+  COALESCE(
+    TO_TIMESTAMP_LTZ(
+      r.header.timeOfCreation,
+      'yyyy-MM-dd''T''HH:mm:ss.SSS''Z''',
+      'UTC'
+    ),
+    TO_TIMESTAMP_LTZ(0, 3)
   ) AS event_ts,
   r.body.equipmentStatus AS equipment_status,
   c.can_id,
@@ -60,7 +65,7 @@ FROM TABLE(
 )
 WHERE message_id IS NOT NULL
   AND equipment_id IS NOT NULL
-  AND event_ts IS NOT NULL
+  AND event_ts > TO_TIMESTAMP_LTZ(0, 3)
 GROUP BY
   window_start,
   window_end,
@@ -125,6 +130,18 @@ GROUP BY
   WHERE equipment_status = 'Working'
   EOT
 
+  # Downstream tables that declare a watermark: table name => watermark column.
+  # The RPM tables cast window_time to TIMESTAMP(6) for the ML function, which a watermark column
+  # can't be, so they expose a TIMESTAMP(3) copy as window_time_3.
+  downstream_watermark_columns = {
+    "machine_ad_test1"       = "window_time"
+    "machine_rpm_anomaly"    = "window_time_3"
+    "machine_rpm_anomaly_m1" = "window_time_3"
+  }
+
+  # Materialized table options applied to every downstream table.
+  downstream_table_options = { "changelog.mode" = "append" }
+
   # Downstream anomaly tables: table name => query (all read machine_features_10s).
   downstream_queries = {
     "machine_ad_test1"       = <<-EOT
@@ -168,6 +185,7 @@ WITH clean AS (
   SELECT
     equipment_id,
     CAST(window_time AS TIMESTAMP(6)) AS window_time,
+    window_time AS window_time_3,
     equipment_status,
     CAST(engine_speed AS DOUBLE) AS rpm,
     engine_speed_peak,
@@ -185,6 +203,7 @@ WITH clean AS (
 SELECT
   equipment_id,
   window_time,
+  window_time_3,
   equipment_status,
   rpm,
   engine_speed_peak,
@@ -204,7 +223,7 @@ SELECT
     )
   ) OVER (
     PARTITION BY equipment_id
-    ORDER BY window_time
+    ORDER BY window_time_3
     RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
   ) AS rpm_anomaly
 FROM clean
@@ -214,6 +233,7 @@ WITH clean AS (
   SELECT
     equipment_id,
     CAST(window_time AS TIMESTAMP(6)) AS window_time,
+    window_time AS window_time_3,
     equipment_status,
     CAST(engine_speed AS DOUBLE) AS rpm,
     engine_speed_peak,
@@ -231,6 +251,7 @@ WITH clean AS (
 SELECT
   equipment_id,
   window_time,
+  window_time_3,
   equipment_status,
   rpm,
   engine_speed_peak,
@@ -250,7 +271,7 @@ SELECT
   )
 ) OVER (
   PARTITION BY equipment_id
-  ORDER BY window_time
+  ORDER BY window_time_3
   RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
 ) as rpm_anomaly_m1,
   ML_DETECT_ANOMALIES(
@@ -263,7 +284,7 @@ SELECT
     )
   ) OVER (
     PARTITION BY equipment_id
-    ORDER BY window_time
+    ORDER BY window_time_3
     RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
   ) AS rpm_anomaly
 FROM clean

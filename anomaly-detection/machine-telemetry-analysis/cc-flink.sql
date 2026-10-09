@@ -24,10 +24,15 @@ with telemetry_long as (
   r.`$rowtime` AS row_ts,
   r.header.id AS message_id,
   r.body.equipmentIdentificationNumber AS equipment_id,
-  TO_TIMESTAMP_LTZ(
-    r.header.timeOfCreation,
-    'yyyy-MM-dd''T''HH:mm:ss.SSS''Z''',
-    'UTC'
+  -- COALESCE makes event_ts NOT NULL; rows with an unparsable timestamp are filtered out below
+  -- (the epoch fallback is never emitted).
+  COALESCE(
+    TO_TIMESTAMP_LTZ(
+      r.header.timeOfCreation,
+      'yyyy-MM-dd''T''HH:mm:ss.SSS''Z''',
+      'UTC'
+    ),
+    TO_TIMESTAMP_LTZ(0, 3)
   ) AS event_ts,
   r.body.equipmentStatus AS equipment_status,
   c.can_id,
@@ -76,7 +81,7 @@ FROM TABLE(
 )
 WHERE message_id IS NOT NULL
   AND equipment_id IS NOT NULL
-  AND event_ts IS NOT NULL
+  AND event_ts > TO_TIMESTAMP_LTZ(0, 3)
 GROUP BY
   window_start,
   window_end,
@@ -86,7 +91,9 @@ GROUP BY
 
 -- dataset to ML
 -- name: machine-features-10s
-CREATE MATERIALIZED TABLE machine_features_10s
+CREATE MATERIALIZED TABLE machine_features_10s (
+  WATERMARK FOR `window_time` AS `window_time`
+)
 DISTRIBUTED BY HASH(`equipment_id`) INTO 6 BUCKETS
 AS
 WITH telemetry_10s AS 
@@ -145,8 +152,11 @@ GROUP BY
 
 -- multi variable anomaly detection
 -- name: machine-ad-test1
-CREATE MATERIALIZED TABLE `machine_ad_test1`
+CREATE MATERIALIZED TABLE `machine_ad_test1` (
+  WATERMARK FOR `window_time` AS `window_time`
+)
 DISTRIBUTED BY HASH(`equipment_id`) INTO 6 BUCKETS
+WITH ('changelog.mode' = 'append')
 AS
 select
   equipment_id,
@@ -185,13 +195,17 @@ FROM machine_features_10s;
 
 -- rpm anomaly detection
 -- name: machine-rpm-anomaly
-CREATE MATERIALIZED TABLE machine_rpm_anomaly
+CREATE MATERIALIZED TABLE machine_rpm_anomaly (
+  WATERMARK FOR `window_time_3` AS `window_time_3`
+)
 DISTRIBUTED BY HASH(`equipment_id`) INTO 6 BUCKETS
+WITH ('changelog.mode' = 'append')
 AS
 WITH clean AS (
   SELECT
     equipment_id,
     CAST(window_time AS TIMESTAMP(6)) AS window_time,
+    window_time AS window_time_3,
     equipment_status,
     CAST(engine_speed AS DOUBLE) AS rpm,
     engine_speed_peak,
@@ -209,6 +223,7 @@ WITH clean AS (
 SELECT
   equipment_id,
   window_time,
+  window_time_3,
   equipment_status,
   rpm,
   engine_speed_peak,
@@ -228,7 +243,7 @@ SELECT
     )
   ) OVER (
     PARTITION BY equipment_id
-    ORDER BY window_time
+    ORDER BY window_time_3
     RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
   ) AS rpm_anomaly
 FROM clean;
