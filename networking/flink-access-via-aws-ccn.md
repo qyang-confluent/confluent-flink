@@ -86,6 +86,7 @@ Select the Flink region and list the available endpoints:
 ```bash
 confluent flink region use --cloud aws --region <aws-region>
 confluent flink endpoint list
+confluent flink endpoint use https://flink-xxxxx.us-east-1.aws.glb.confluent.cloud
 ```
 
 Select the CCN/private endpoint shown for the environment before using the Flink SQL shell or submitting statements.
