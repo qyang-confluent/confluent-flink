@@ -45,5 +45,5 @@ variable "env_file" {
 variable "telemetry_topic" {
   description = "Raw telemetry topic; its value schema is registered from machine-schema.avsc."
   type        = string
-  default     = "agco.fuse.data.telemetryDataFrame.avro.v001"
+  default     = "machine_telemetry"
 }
