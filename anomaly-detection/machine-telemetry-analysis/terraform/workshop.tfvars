@@ -1,5 +1,0 @@
-environment_id     = "env-n15mqz"
-kafka_cluster_name = "sandbox"
-service_account_id = "sa-kgn1v7g"
-cloud              = "AWS"
-region             = "us-east-1"
