@@ -2,7 +2,7 @@
   "generators": [
     {
       "name": "machine-telemetry",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00104",
       "vars": {
         "createdMs": {
@@ -990,7 +990,7 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     }

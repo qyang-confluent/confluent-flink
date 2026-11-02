@@ -11,7 +11,10 @@
 #
 # Usage:
 #   COMPUTE_POOL=lfcp-xxxx ENV_ID=env-xxxx DATABASE=<kafka-cluster-name> \
-#     [CLOUD=aws REGION=us-east-1] ./deploy.sh [file.sql]
+#     [TELEMETRY_TOPIC=<raw-topic>] [CLOUD=aws REGION=us-east-1] ./deploy.sh [file.sql]
+#
+# TELEMETRY_TOPIC is the raw telemetry topic/table; it replaces ${TELEMETRY_TOPIC} in the SQL file
+# (default: machine_telemetry).
 #
 # CLOUD/REGION are only needed if you have not run `confluent flink region use`.
 set -euo pipefail
@@ -22,6 +25,7 @@ FILE="${1:-cc-flink.sql}"
 : "${COMPUTE_POOL:?set COMPUTE_POOL (e.g. lfcp-xxxx)}"
 : "${ENV_ID:?set ENV_ID (e.g. env-xxxx)}"
 : "${DATABASE:?set DATABASE (Kafka cluster name)}"
+TELEMETRY_TOPIC="${TELEMETRY_TOPIC:-machine_telemetry}"
 
 REGION_ARGS=()
 [ -n "${CLOUD:-}" ] && REGION_ARGS+=(--cloud "$CLOUD")
@@ -30,11 +34,14 @@ REGION_ARGS=()
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 
+# Substitute ${TELEMETRY_TOPIC} in the SQL.
+sed "s|\${TELEMETRY_TOPIC}|$TELEMETRY_TOPIC|g" "$FILE" > "$TMP/input.sql"
+
 NAME_RE='^[[:space:]]*--[[:space:]]*name:'
 
 # Drop plain comment lines (keep "-- name:" lines), then split on ";" into numbered files.
 # Assumes no ";" inside string literals.
-awk -v re="$NAME_RE" '$0 ~ re {print; next} /^[[:space:]]*--/ {next} {print}' "$FILE" \
+awk -v re="$NAME_RE" '$0 ~ re {print; next} /^[[:space:]]*--/ {next} {print}' "$TMP/input.sql" \
   | awk -v dir="$TMP" -v RS=';' 'NF {printf "%s", $0 > sprintf("%s/stmt_%02d.sql", dir, ++n)}'
 
 # Extract each statement's name; fail if one is missing.

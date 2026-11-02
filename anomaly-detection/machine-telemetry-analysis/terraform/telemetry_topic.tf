@@ -1,6 +1,6 @@
 # Raw telemetry topic (10 partitions, 7d retention) and its Avro value schema.
 # If the topic already exists, import it instead of creating it:
-#   terraform import confluent_kafka_topic.telemetry <kafka-cluster-id>/machine.telemetry
+#   terraform import confluent_kafka_topic.telemetry <kafka-cluster-id>/agco.fuse.data.telemetryDataFrame.avro.v001
 resource "confluent_kafka_topic" "telemetry" {
   topic_name       = var.telemetry_topic
   partitions_count = 10

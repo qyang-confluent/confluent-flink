@@ -40,7 +40,7 @@ with telemetry_long as (
   c.unit,
   c.value_raw,
   c.`value`
-FROM `machine.telemetry` AS r
+FROM `${TELEMETRY_TOPIC}` AS r
 CROSS JOIN UNNEST(r.body.canData)
   AS c(can_id, can_name, unit, value_raw, `value`)
 )

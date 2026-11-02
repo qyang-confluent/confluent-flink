@@ -4,7 +4,7 @@ variable "environment_id" {
 }
 
 variable "kafka_cluster_name" {
-  description = "Display name of the existing Kafka cluster in the environment. Used as the Flink database (current-database) for the compute pool's statements and tables; must hold the machine.telemetry table."
+  description = "Display name of the existing Kafka cluster in the environment. Used as the Flink database (current-database) for the compute pool's statements and tables; must hold the agco.fuse.data.telemetryDataFrame.avro.v001 table."
   type        = string
 }
 
@@ -32,7 +32,7 @@ variable "max_cfu" {
 }
 
 variable "service_account_id" {
-  description = "Existing service account (sa-xxxx) the Flink statements run as. It needs FlinkDeveloper plus read on machine.telemetry and write on the output topics/schemas."
+  description = "Existing service account (sa-xxxx) the Flink statements run as. It needs FlinkDeveloper plus read on agco.fuse.data.telemetryDataFrame.avro.v001 and write on the output topics/schemas."
   type        = string
 }
 
@@ -45,5 +45,5 @@ variable "env_file" {
 variable "telemetry_topic" {
   description = "Raw telemetry topic; its value schema is registered from machine-schema.avsc."
   type        = string
-  default     = "machine.telemetry"
+  default     = "agco.fuse.data.telemetryDataFrame.avro.v001"
 }

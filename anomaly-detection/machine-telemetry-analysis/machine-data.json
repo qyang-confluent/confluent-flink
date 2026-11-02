@@ -1,0 +1,326 @@
+{
+    "header":
+    {
+        "id": "9a543e0f-b37a-41cf-9adf-19a63433c745",
+        "schemaID": "5d6a9033-632a-48ef-8724-349ed1bf0648",
+        "schemaVersion": 2,
+        "timeOfCreation": "2026-09-30T16:36:50.469Z",
+        "timeOfReception": "2026-09-30T16:36:54.904Z"
+    },
+    "body":
+    {
+        "canData":
+        [
+            {
+                "canID": 2147540818,
+                "canName": "GPS_MODE",
+                "unit": "enum",
+                "valueRaw": 3.0,
+                "value": 3.0
+            },
+            {
+                "canID": 92,
+                "canName": "ENGINE_LOAD",
+                "unit": "%",
+                "valueRaw": 79.0,
+                "value": 79.0
+            },
+            {
+                "canID": 1862,
+                "canName": "VEHICLE_SPEED",
+                "unit": "m/s",
+                "valueRaw": 3.9250000000000003,
+                "value": 3.9250000000000003
+            },
+            {
+                "canID": 183,
+                "canName": "FUEL_RATE",
+                "unit": "m3/s",
+                "valueRaw": 0.0000121388986,
+                "value": 0.0000121388986
+            },
+            {
+                "canID": 3826,
+                "canName": "SCR_AVERAGE_CONSUMPTION",
+                "unit": "m3/s",
+                "valueRaw": 0.00000124084326,
+                "value": 0.00000124084326
+            },
+            {
+                "canID": 250,
+                "canName": "FUEL_TOTAL",
+                "unit": "m3",
+                "valueRaw": 68.83120000000001,
+                "value": 68.83120000000001
+            },
+            {
+                "canID": 1761,
+                "canName": "SCR_TANK_LEVEL",
+                "unit": "%",
+                "valueRaw": 63.6,
+                "value": 63.6
+            },
+            {
+                "canID": 100,
+                "canName": "ENGINE_OIL_PRESS",
+                "unit": "Pa",
+                "valueRaw": 284000.0,
+                "value": 284000.0
+            },
+            {
+                "canID": 94,
+                "canName": "FUEL_DELIVERY_PRESSURE",
+                "unit": "Pa",
+                "valueRaw": 528000.0,
+                "value": 528000.0
+            },
+            {
+                "canID": 102,
+                "canName": "INTAKE_MANIFOLD_PRESSURE",
+                "unit": "Pa",
+                "valueRaw": 230000.0,
+                "value": 230000.0
+            },
+            {
+                "canID": 190,
+                "canName": "ENGINE_SPEED",
+                "unit": "rpm",
+                "valueRaw": 1309.0,
+                "value": 1309.0
+            },
+            {
+                "canID": 2147542305,
+                "canName": "TRANS_OIL_PRESSURE",
+                "unit": "Pa",
+                "valueRaw": 1.92E+7,
+                "value": 1.92E+7
+            },
+            {
+                "canID": 168,
+                "canName": "BATTERY_VOLTAGE",
+                "unit": "V",
+                "valueRaw": 14.05,
+                "value": 14.05
+            },
+            {
+                "canID": 1873,
+                "canName": "HITCH_POSITION_REAR",
+                "unit": "%",
+                "valueRaw": 22.0,
+                "value": 22.0
+            },
+            {
+                "canID": 171,
+                "canName": "OUTSIDE_AIR_TEMP",
+                "unit": "°C",
+                "valueRaw": 20.0,
+                "value": 20.0
+            },
+            {
+                "canID": 1879,
+                "canName": "REAR_DRAFT",
+                "unit": "N",
+                "valueRaw": 880.0,
+                "value": 880.0
+            },
+            {
+                "canID": 523406,
+                "canName": "GEARBOX_THRUST_PRESSURE",
+                "unit": "Pa",
+                "valueRaw": 1400000.0,
+                "value": 1400000.0
+            },
+            {
+                "canID": 523407,
+                "canName": "HYDRAULIC_ENGINE_SPEED_2",
+                "unit": "rpm",
+                "valueRaw": 2065.0,
+                "value": 2065.0
+            },
+            {
+                "canID": 523408,
+                "canName": "SUMMATION_SHAFT_SPEED",
+                "unit": "rpm",
+                "valueRaw": 1102.0,
+                "value": 1102.0
+            },
+            {
+                "canID": 523409,
+                "canName": "BEVEL_PINION_SPEED_SENSOR",
+                "unit": "rpm",
+                "valueRaw": 1096.0,
+                "value": 1096.0
+            },
+            {
+                "canID": 105,
+                "canName": "INTAKE_MANIFOLD_TEMP",
+                "unit": "°C",
+                "valueRaw": 50.0,
+                "value": 50.0
+            },
+            {
+                "canID": 61442,
+                "canName": "TRANS_SET_RATIO",
+                "unit": "(1)",
+                "valueRaw": 2270.0,
+                "value": 2270.0
+            },
+            {
+                "canID": 61441,
+                "canName": "TRANS_ACT_RATIO",
+                "unit": "(1)",
+                "valueRaw": 2246.0,
+                "value": 2246.0
+            },
+            {
+                "canID": 1638,
+                "canName": "HYDR_OIL_TEMP",
+                "unit": "°C",
+                "valueRaw": 62.0,
+                "value": 62.0
+            },
+            {
+                "canID": 3319,
+                "canName": "MACHINE_ROLL",
+                "unit": "deg",
+                "valueRaw": 2.18,
+                "value": 2.18
+            },
+            {
+                "canID": 3318,
+                "canName": "MACHINE_PITCH",
+                "unit": "deg",
+                "valueRaw": 2.07,
+                "value": 2.07
+            },
+            {
+                "canID": 57346,
+                "canName": "DISTANCE",
+                "unit": "m",
+                "valueRaw": 1923.356,
+                "value": 1923.356
+            },
+            {
+                "canID": 91,
+                "canName": "ACCELERATOR_PEDAL_PERCENT",
+                "unit": "%",
+                "valueRaw": 26.0,
+                "value": 26.0
+            },
+            {
+                "canID": 175,
+                "canName": "ENGINE_OIL_TEMP",
+                "unit": "°C",
+                "valueRaw": 113.25,
+                "value": 113.25
+            },
+            {
+                "canID": 513,
+                "canName": "ENGINE_PERCENT_TORQUE",
+                "unit": "%",
+                "valueRaw": 69.0,
+                "value": 69.0
+            },
+            {
+                "canID": 3357,
+                "canName": "ACTUAL_MAXIMUM_AVAILABLE_ENGINE_TORQUE",
+                "unit": "%",
+                "valueRaw": 100.0,
+                "value": 100.0
+            },
+            {
+                "canID": 4331,
+                "canName": "SCR_ACTUAL_DOSING_QUANTITY",
+                "unit": "kg/s",
+                "valueRaw": 0.00134432,
+                "value": 0.00134432
+            },
+            {
+                "canID": 2147542314,
+                "canName": "SPRAY_NOZZLE_PRESSURE",
+                "unit": "Pa",
+                "valueRaw": 1008000.0,
+                "value": 1008000.0
+            },
+            {
+                "canID": 520205,
+                "canName": "SETPOINT_ENGINE_FAN_SPEED",
+                "unit": "rpm",
+                "valueRaw": 1880.0,
+                "value": 1880.0
+            },
+            {
+                "canID": 3236,
+                "canName": "AFTERTREATMENT_1_EXHAUST_GAS_MASS_FLOW_RATE",
+                "unit": "kg/s",
+                "valueRaw": 0.2388865,
+                "value": 0.2388865
+            },
+            {
+                "canID": 3241,
+                "canName": "AFTERTREATMENT_1_EXHAUST_TEMPERATURE_1",
+                "unit": "°C",
+                "valueRaw": 474.0625,
+                "value": 474.0625
+            },
+            {
+                "canID": 3245,
+                "canName": "AFTERTREATMENT_1_EXHAUST_TEMPERATURE_3",
+                "unit": "°C",
+                "valueRaw": 458.625,
+                "value": 458.625
+            },
+            {
+                "canID": 3251,
+                "canName": "AFTERTREATMENT_1_DIESEL_PARTICULATE_FILTER_DIFFERENTIAL_PRESSURE",
+                "unit": "Pa",
+                "valueRaw": 5900.0,
+                "value": 5900.0
+            },
+            {
+                "canID": 4360,
+                "canName": "SCR_CATALYST_INTAKE_GAS_TEMP",
+                "unit": "°C",
+                "valueRaw": 457.53125,
+                "value": 457.53125
+            },
+            {
+                "canID": 4363,
+                "canName": "SCR_CATALYST_OUTLET_GAS_TEMP",
+                "unit": "°C",
+                "valueRaw": 475.65625,
+                "value": 475.65625
+            },
+            {
+                "canID": 520331,
+                "canName": "TRANS_TRACTIVE_FORCE",
+                "unit": "N",
+                "valueRaw": 37740.0,
+                "value": 37740.0
+            },
+            {
+                "canID": 520344,
+                "canName": "WAS_MEDIAN_ANGLE",
+                "unit": "deg",
+                "valueRaw": 11.08,
+                "value": 11.08
+            }
+        ],
+        "deviceRevision": "0402",
+        "deviceSerialNumber": "0402-161235",
+        "deviceType": "Gateway",
+        "environment": "engineering",
+        "equipmentIdentificationNumber": "WAM84523K00F00104",
+        "equipmentStatusRaw": 5,
+        "equipmentStatus": "Working",
+        "geospatialData":
+        {
+            "elevation": null,
+            "heading": null,
+            "latitude": 46.9184619,
+            "longitude": 16.69813,
+            "speed": null,
+            "timeStamp": "2026-09-30T16:36:50.037826693Z"
+        }
+    }
+}

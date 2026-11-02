@@ -59,7 +59,7 @@ locals {
 }
 
 resource "confluent_flink_materialized_table" "telemetry_flat" {
-  # The machine.telemetry topic and its schema must exist before Flink can read the table.
+  # The agco.fuse.data.telemetryDataFrame.avro.v001 topic and its schema must exist before Flink can read the table.
   depends_on = [confluent_kafka_topic.telemetry, confluent_schema.telemetry]
 
   display_name    = "machine_telemetry_flat"

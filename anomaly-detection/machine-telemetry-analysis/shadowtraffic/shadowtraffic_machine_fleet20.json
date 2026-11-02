@@ -2,7 +2,7 @@
   "generators": [
     {
       "name": "machine-telemetry-01",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00101",
       "vars": {
         "createdMs": {
@@ -990,13 +990,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-02",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00102",
       "vars": {
         "createdMs": {
@@ -1984,13 +1984,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-03",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00103",
       "vars": {
         "createdMs": {
@@ -2978,13 +2978,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-04",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00104",
       "vars": {
         "createdMs": {
@@ -3972,13 +3972,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-05",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00105",
       "vars": {
         "createdMs": {
@@ -4966,13 +4966,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-06",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00106",
       "vars": {
         "createdMs": {
@@ -5960,13 +5960,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-07",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00107",
       "vars": {
         "createdMs": {
@@ -6954,13 +6954,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-08",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00108",
       "vars": {
         "createdMs": {
@@ -7948,13 +7948,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-09",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00109",
       "vars": {
         "createdMs": {
@@ -8942,13 +8942,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-10",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00110",
       "vars": {
         "createdMs": {
@@ -9936,13 +9936,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-11",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00111",
       "vars": {
         "createdMs": {
@@ -10930,13 +10930,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-12",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00112",
       "vars": {
         "createdMs": {
@@ -11924,13 +11924,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-13",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00113",
       "vars": {
         "createdMs": {
@@ -12918,13 +12918,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-14",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00114",
       "vars": {
         "createdMs": {
@@ -13912,13 +13912,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-15",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00115",
       "vars": {
         "createdMs": {
@@ -14906,13 +14906,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-16",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00116",
       "vars": {
         "createdMs": {
@@ -15900,13 +15900,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-17",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00117",
       "vars": {
         "createdMs": {
@@ -16894,13 +16894,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-18",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00118",
       "vars": {
         "createdMs": {
@@ -17888,13 +17888,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-19",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00119",
       "vars": {
         "createdMs": {
@@ -18882,13 +18882,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-20",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00120",
       "vars": {
         "createdMs": {
@@ -19876,13 +19876,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-21",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00121",
       "vars": {
         "createdMs": {
@@ -20870,13 +20870,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-22",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00122",
       "vars": {
         "createdMs": {
@@ -21864,13 +21864,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-23",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00123",
       "vars": {
         "createdMs": {
@@ -22858,13 +22858,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-24",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00124",
       "vars": {
         "createdMs": {
@@ -23852,13 +23852,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-25",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00125",
       "vars": {
         "createdMs": {
@@ -24846,13 +24846,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-26",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00126",
       "vars": {
         "createdMs": {
@@ -25840,13 +25840,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-27",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00127",
       "vars": {
         "createdMs": {
@@ -26834,13 +26834,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-28",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00128",
       "vars": {
         "createdMs": {
@@ -27828,13 +27828,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-29",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00129",
       "vars": {
         "createdMs": {
@@ -28822,13 +28822,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-30",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00130",
       "vars": {
         "createdMs": {
@@ -29816,13 +29816,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-31",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00131",
       "vars": {
         "createdMs": {
@@ -30810,13 +30810,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-32",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00132",
       "vars": {
         "createdMs": {
@@ -31804,13 +31804,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-33",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00133",
       "vars": {
         "createdMs": {
@@ -32798,13 +32798,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-34",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00134",
       "vars": {
         "createdMs": {
@@ -33792,13 +33792,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-35",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00135",
       "vars": {
         "createdMs": {
@@ -34786,13 +34786,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-36",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00136",
       "vars": {
         "createdMs": {
@@ -35780,13 +35780,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-37",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00137",
       "vars": {
         "createdMs": {
@@ -36774,13 +36774,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-38",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00138",
       "vars": {
         "createdMs": {
@@ -37768,13 +37768,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-39",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00139",
       "vars": {
         "createdMs": {
@@ -38762,13 +38762,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-40",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00140",
       "vars": {
         "createdMs": {
@@ -39756,13 +39756,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-41",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00141",
       "vars": {
         "createdMs": {
@@ -40750,13 +40750,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-42",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00142",
       "vars": {
         "createdMs": {
@@ -41744,13 +41744,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-43",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00143",
       "vars": {
         "createdMs": {
@@ -42738,13 +42738,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-44",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00144",
       "vars": {
         "createdMs": {
@@ -43732,13 +43732,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-45",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00145",
       "vars": {
         "createdMs": {
@@ -44726,13 +44726,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-46",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00146",
       "vars": {
         "createdMs": {
@@ -45720,13 +45720,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-47",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00147",
       "vars": {
         "createdMs": {
@@ -46714,13 +46714,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-48",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00148",
       "vars": {
         "createdMs": {
@@ -47708,13 +47708,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-49",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00149",
       "vars": {
         "createdMs": {
@@ -48702,13 +48702,13 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     },
     {
       "name": "machine-telemetry-50",
-      "topic": "machine.telemetry",
+      "topic": "${TELEMETRY_TOPIC}",
       "key": "WAM84523K00F00150",
       "vars": {
         "createdMs": {
@@ -49696,7 +49696,7 @@
           }
         },
         "schemaRegistrySubject": {
-          "value": "machine.telemetry-value"
+          "value": "${TELEMETRY_TOPIC}-value"
         }
       }
     }

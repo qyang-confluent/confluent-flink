@@ -5,7 +5,7 @@ This guide explains how to run the statements in `cc-flink.sql` (or the equivale
 ## Pipeline overview
 
 ```
-machine.telemetry (Avro topic, raw nested CAN data)
+agco.fuse.data.telemetryDataFrame.avro.v001 (Avro topic, raw nested CAN data)
         │  machine_telemetry_flat: UNNEST canData + pivot, 1s TUMBLE on record time (continuous)
         ▼
 machine_telemetry_flat (one wide row per message, watermark = event_ts - 5s)
@@ -25,7 +25,7 @@ Use one path per environment, not both.
 | Path | Use when |
 |---|---|
 | **A. `deploy.sh`** (Confluent CLI) | You already have a compute pool, topic and schema, and just want to deploy `cc-flink.sql` |
-| **B. `terraform/`** | You also want the compute pool, API keys, `machine.telemetry` topic and its schema created for you |
+| **B. `terraform/`** | You also want the compute pool, API keys, `agco.fuse.data.telemetryDataFrame.avro.v001` topic and its schema created for you |
 | **C. Statements by hand** | You want to step through and inspect each table in a SQL workspace |
 
 ## Prerequisites
@@ -39,7 +39,7 @@ Use one path per environment, not both.
 
 ## Step 1 – Generate telemetry
 
-The raw topic is `machine.telemetry`. If you have no live data, produce synthetic data:
+The raw topic is `agco.fuse.data.telemetryDataFrame.avro.v001`. If you have no live data, produce synthetic data:
 
 ```bash
 cd shadowtraffic
@@ -54,7 +54,7 @@ Each generator emits up to 1000 events with a 10 s throttle (`maxEvents: 1000`, 
 Anomaly detection needs a baseline before it flags anything, so let it run for a while (see "Baseline timing" below). Confirm data is arriving:
 
 ```bash
-confluent kafka topic consume machine.telemetry --from-beginning \
+confluent kafka topic consume agco.fuse.data.telemetryDataFrame.avro.v001 --from-beginning \
   --value-format avro --schema-registry-endpoint <SR_URL> | head
 ```
 
@@ -103,10 +103,10 @@ terraform apply
 This creates:
 
 - the Flink compute pool (`compute_pool_name`, `max_cfu`) and a Flink API key owned by the service account,
-- the `machine.telemetry` topic and registers its value schema from `machine-schema.avsc`,
+- the `agco.fuse.data.telemetryDataFrame.avro.v001` topic and registers its value schema from `machine-schema.avsc`,
 - the four materialized tables as `confluent_flink_materialized_table` resources, chained with `depends_on`: `machine_telemetry_flat` → `machine_features_10s` → the downstream anomaly tables.
 
-The queries live in `terraform/queries.tf`. To add another downstream detector, add an entry to `local.downstream_queries`. The service account needs `FlinkDeveloper`, read on `machine.telemetry`, and write on the output topics and schemas.
+The queries live in `terraform/queries.tf`. To add another downstream detector, add an entry to `local.downstream_queries`. The service account needs `FlinkDeveloper`, read on `agco.fuse.data.telemetryDataFrame.avro.v001`, and write on the output topics and schemas.
 
 `terraform output materialized_tables` lists the deployed tables. Keep `cc-flink.sql` and `queries.tf` in sync, since they define the same queries.
 
@@ -129,8 +129,8 @@ USE `<cluster-name>`;
 Check that the source table is visible:
 
 ```sql
-DESCRIBE `machine.telemetry`;
-SELECT * FROM `machine.telemetry` LIMIT 5;
+DESCRIBE `agco.fuse.data.telemetryDataFrame.avro.v001`;
+SELECT * FROM `agco.fuse.data.telemetryDataFrame.avro.v001` LIMIT 5;
 ```
 
 Run each statement from `cc-flink.sql` separately and in order, since the shell and workspace execute one statement at a time. Wait for each to reach `RUNNING` before starting the next. The sections below describe what each does.

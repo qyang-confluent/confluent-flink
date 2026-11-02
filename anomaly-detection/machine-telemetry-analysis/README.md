@@ -7,7 +7,7 @@ Raw telemetry arrives as nested Avro messages, with one message holding an array
 ## Pipeline
 
 ```
-machine.telemetry            Avro topic, raw nested canData array
+agco.fuse.data.telemetryDataFrame.avro.v001            Avro topic, raw nested canData array
    │  UNNEST canData + pivot (1s TUMBLE on record time, append-only)
    ▼
 machine_telemetry_flat       one wide row per message
