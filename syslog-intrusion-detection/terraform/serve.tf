@@ -88,6 +88,6 @@ variable "replace_on_user_data_change" {
 }
 
 output "serve_url" {
-  value       = "http://${aws_instance.slm.public_dns}:${var.serve_port}"
+  value       = local.vllm ? "http://${aws_instance.slm[0].public_dns}:${var.serve_port}" : null
   description = "Direct vLLM URL (first boot ~10 min: pip install vllm + model download + load)"
 }

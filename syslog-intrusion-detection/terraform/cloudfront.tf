@@ -1,13 +1,16 @@
 # HTTPS front door: Confluent Cloud Flink only accepts https:// endpoints; CloudFront gives a trusted cert with no domain.
 data "aws_cloudfront_cache_policy" "caching_disabled" {
-  name = "Managed-CachingDisabled"
+  count = local.vllm ? 1 : 0
+  name  = "Managed-CachingDisabled"
 }
 
 data "aws_cloudfront_origin_request_policy" "all_viewer_except_host" {
-  name = "Managed-AllViewerExceptHostHeader"
+  count = local.vllm ? 1 : 0
+  name  = "Managed-AllViewerExceptHostHeader"
 }
 
 resource "aws_cloudfront_distribution" "slm" {
+  count           = local.vllm ? 1 : 0
   enabled         = true
   comment         = "syslog SLM endpoint"
   price_class     = "PriceClass_100"
@@ -15,7 +18,7 @@ resource "aws_cloudfront_distribution" "slm" {
 
   origin {
     origin_id   = "slm-ec2"
-    domain_name = aws_instance.slm.public_dns
+    domain_name = aws_instance.slm[0].public_dns
     custom_origin_config {
       http_port                = var.serve_port
       https_port               = 443
@@ -31,8 +34,8 @@ resource "aws_cloudfront_distribution" "slm" {
     viewer_protocol_policy   = "https-only"
     allowed_methods          = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
     cached_methods           = ["GET", "HEAD"]
-    cache_policy_id          = data.aws_cloudfront_cache_policy.caching_disabled.id
-    origin_request_policy_id = data.aws_cloudfront_origin_request_policy.all_viewer_except_host.id
+    cache_policy_id          = data.aws_cloudfront_cache_policy.caching_disabled[0].id
+    origin_request_policy_id = data.aws_cloudfront_origin_request_policy.all_viewer_except_host[0].id
   }
 
   restrictions {
@@ -47,5 +50,5 @@ resource "aws_cloudfront_distribution" "slm" {
 }
 
 output "serve_https_url" {
-  value = "https://${aws_cloudfront_distribution.slm.domain_name}"
+  value = local.vllm ? "https://${aws_cloudfront_distribution.slm[0].domain_name}" : null
 }

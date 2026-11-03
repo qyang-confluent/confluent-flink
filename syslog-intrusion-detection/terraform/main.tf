@@ -4,6 +4,7 @@ provider "aws" {
 
 # One GPU instance running vLLM. AMI must ship the Nvidia driver (e.g. Deep Learning Base AMI, Ubuntu).
 resource "aws_instance" "slm" {
+  count                  = local.vllm ? 1 : 0
   ami                    = var.ami_id
   instance_type          = var.instance_type
   subnet_id              = var.subnet_id
@@ -37,5 +38,5 @@ resource "aws_instance" "slm" {
 }
 
 output "instance_public_dns" {
-  value = aws_instance.slm.public_dns
+  value = one(aws_instance.slm[*].public_dns)
 }
