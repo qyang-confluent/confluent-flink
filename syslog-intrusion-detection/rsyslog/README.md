@@ -25,7 +25,8 @@ The API key needs WRITE on the topic. Copy `../logstash/logstash.env.example` to
 - `rsyslogd`'s own messages are skipped: librdkafka errors are logged via syslog and would otherwise loop into the topic.
 - Messages are buffered in a disk queue (`/var/spool/rsyslog/ccloud_fwd*`, 256 MB) while Confluent Cloud is unreachable.
 - Debug: `sudo journalctl -u rsyslog -f`, or `sudo rsyslogd -N1`. SASL/auth errors show up there as `omkafka` failures.
-- `omkafka`'s `key` (per-host partitioning) is commented out in the template: it needs rsyslog >= 8.2204. Windows are
-  grouped by `host` in Flink regardless, so it only affects partition spread.
+- Record key is the host name (`dynaKey` + template `ccloud_key`), matching Logstash's `message_key`. If the installed
+  rsyslog rejects it, `install.sh` prints a warning and installs without a key; Flink groups by `host` regardless, so
+  that only affects partition spread. Check with `confluent kafka topic consume syslog --print-key`.
 - Receiving remote hosts' syslog (UDP/TCP 514 via `imudp`/`imtcp`) works with the same output: `host` is then the sender's hostname.
 - Untested end to end: written without access to the Ubuntu box. Run step 3 and check `rsyslogd -N1` output first.

@@ -23,14 +23,26 @@ sudo apt-get update -qq
 sudo apt-get install -y rsyslog rsyslog-kafka
 
 # Render the template (bash substitution, so secrets with special characters are safe).
-conf=$(<60-confluent.conf.tpl)
-conf=${conf//@@BOOTSTRAP@@/$CCLOUD_BOOTSTRAP_SERVERS}
-conf=${conf//@@TOPIC@@/$TOPIC}
-conf=${conf//@@API_KEY@@/$API_KEY}
-conf=${conf//@@API_SECRET@@/$API_SECRET}
-printf '%s\n' "$conf" | sudo install -m 600 -o root -g root /dev/stdin /etc/rsyslog.d/60-confluent.conf
+# $1 = key lines to splice in (per-host Kafka key, or empty).
+DEST=/etc/rsyslog.d/60-confluent.conf
+render() {
+  local conf; conf=$(<60-confluent.conf.tpl)
+  conf=${conf//@@BOOTSTRAP@@/$CCLOUD_BOOTSTRAP_SERVERS}
+  conf=${conf//@@TOPIC@@/$TOPIC}
+  conf=${conf//@@API_KEY@@/$API_KEY}
+  conf=${conf//@@API_SECRET@@/$API_SECRET}
+  conf=${conf//@@KEY@@/$1}
+  printf '%s\n' "$conf" | sudo install -m 600 -o root -g root /dev/stdin "$DEST"
+}
 
-sudo rsyslogd -N1                       # config check; aborts here (set -e) on errors
+# Try the per-host Kafka key first; older rsyslog (omkafka without dynaKey) rejects it, then fall back to no key.
+render '    key="ccloud_key"
+    dynaKey="on"'
+if ! sudo rsyslogd -N1; then
+  echo "rsyslog rejected the Kafka key settings (old version?); installing without a key" >&2
+  render ''
+  sudo rsyslogd -N1                     # still failing -> real config error, abort (set -e)
+fi
 sudo systemctl restart rsyslog
 echo "Done. Test:"
 echo "  logger -p auth.warning \"test sshd[1]: Failed password for root from 203.0.113.50 port 1 ssh2\""

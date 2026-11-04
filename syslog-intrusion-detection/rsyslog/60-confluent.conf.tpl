@@ -23,6 +23,9 @@ template(name="ccloud_json" type="list") {
   constant(value="\"}")
 }
 
+# Kafka record key = host name (same host -> same partition, per-host order). Used via dynaKey; install.sh drops it if unsupported.
+template(name="ccloud_key" type="string" string="%hostname%")
+
 # Skip rsyslogd's own messages: omkafka/librdkafka errors are logged via syslog and would feed back into the topic.
 if ($programname != "rsyslogd") then {
   action(
@@ -30,7 +33,7 @@ if ($programname != "rsyslogd") then {
     broker=["@@BOOTSTRAP@@"]
     topic="@@TOPIC@@"
     template="ccloud_json"
-    # key="%hostname%"   # same host -> same partition; needs rsyslog >= 8.2204 (omkafka `key`)
+@@KEY@@
     confParam=[
       "security.protocol=sasl_ssl",
       "sasl.mechanisms=PLAIN",
