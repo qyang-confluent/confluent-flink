@@ -32,7 +32,9 @@ render() {
   conf=${conf//@@API_KEY@@/$API_KEY}
   conf=${conf//@@API_SECRET@@/$API_SECRET}
   conf=${conf//@@KEY@@/$1}
-  printf '%s\n' "$conf" | sudo install -m 600 -o root -g root /dev/stdin "$DEST"
+  sudo mkdir -p "$(dirname "$DEST")"
+  printf '%s\n' "$conf" | sudo sh -c 'umask 077; cat > "$1"' _ "$DEST"   # mode 600: contains the API secret
+  sudo chown root:root "$DEST"
 }
 
 # Try the per-host Kafka key first; older rsyslog (omkafka without dynaKey) rejects it, then fall back to no key.
