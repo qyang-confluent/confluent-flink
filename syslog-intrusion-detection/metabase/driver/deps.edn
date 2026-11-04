@@ -1,0 +1,6 @@
+{:paths
+ ["src" "resources"]
+
+ :deps
+ ;; Public Confluent JDBC driver (io.confluent.jdbc:confluent-jdbc, downloaded by the Dockerfile). Bundled into the plugin jar.
+ {io.confluent/confluent-jdbc {:local/root "confluent-jdbc.jar"}}}

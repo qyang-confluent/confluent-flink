@@ -1,0 +1,15 @@
+name: syslog-metabase
+services:
+  metabase:
+    build: .
+    image: metabase-confluent
+    container_name: metabase-syslog
+    ports:
+      - "3000:3000"   # the insurance-fraud Metabase also defaults to 3000: run only one at a time
+    volumes:
+      - metabase-syslog-data:/metabase-data
+    environment:
+      MB_DB_FILE: /metabase-data/metabase.db   # H2 app db; fine for a demo
+      MB_ENABLE_PUBLIC_SHARING: "true"        # lets build_dashboard.py publish a no-login link
+volumes:
+  metabase-syslog-data:

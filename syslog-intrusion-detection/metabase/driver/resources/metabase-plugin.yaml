@@ -1,0 +1,78 @@
+info:
+  name: Metabase Confluent Flink Driver
+  version: 1.0.0-SNAPSHOT
+  description: Query Kafka topics on Confluent Cloud with Flink SQL snapshot queries through the public Confluent JDBC driver.
+driver:
+  - name: confluent-flink
+    display-name: Confluent Cloud (Flink)
+    lazy-load: true
+    parent: sql-jdbc
+    connection-properties:
+    - name: cloud
+      display-name: Cloud provider
+      placeholder: aws
+      required: true
+    - name: region
+      display-name: Region
+      placeholder: us-east-1
+      required: true
+    - name: organization-id
+      display-name: Organization ID
+      placeholder: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+      required: true
+    - name: environment-id
+      display-name: Environment ID
+      placeholder: env-xxxxxx
+      required: true
+    - name: compute-pool-id
+      display-name: Compute pool ID
+      placeholder: lfcp-xxxxxx
+      required: false
+    - name: catalog
+      display-name: Catalog (environment name)
+      placeholder: my-environment
+      required: true
+    - name: database
+      display-name: Database (Kafka cluster name)
+      placeholder: my-cluster
+      required: true
+    - name: user
+      display-name: Flink API key
+      required: true
+    - merge:
+        - password
+        - display-name: Flink API secret
+          required: true
+    - default-advanced-options
+  - name: confluent-lightning
+    display-name: Confluent Cloud (Lightning / RTCE)
+    lazy-load: true
+    parent: sql-jdbc
+    connection-properties:
+      - name: lightning-endpoint
+        display-name: Lightning endpoint
+        placeholder: sql.us-east-1.aws.confluent.cloud
+        required: true
+      - name: environment-id
+        display-name: Environment ID
+        placeholder: env-xxxxxx
+        required: true
+      - name: lkc-id
+        display-name: Kafka cluster ID
+        placeholder: lkc-xxxxxx
+        required: true
+      - name: user
+        display-name: Global API key
+        required: true
+      - merge:
+          - password
+          - display-name: Global API secret
+            required: true
+      - default-advanced-options
+init:
+  - step: load-namespace
+    namespace: metabase.driver.confluent-flink
+  - step: load-namespace
+    namespace: metabase.driver.confluent-lightning
+  - step: register-jdbc-driver
+    class: io.confluent.jdbc.avatica.ConfluentJdbcDriver
